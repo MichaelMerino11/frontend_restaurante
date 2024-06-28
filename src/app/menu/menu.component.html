@@ -1,0 +1,16 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold mb-4">Menú</h1>
+  <div *ngIf="menu.length > 0; else noMenu">
+    <div
+      *ngFor="let plato of menu"
+      class="p-4 mb-4 bg-white rounded-lg shadow-md"
+    >
+      <h2 class="text-2xl font-bold">{{ plato.nombre }}</h2>
+      <p>{{ plato.descripcion }}</p>
+      <p class="text-lg font-semibold">{{ plato.precio | currency }}</p>
+    </div>
+  </div>
+  <ng-template #noMenu>
+    <p>No hay platos disponibles en este momento.</p>
+  </ng-template>
+</div>
