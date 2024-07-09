@@ -1,14 +1,108 @@
-<div class="container mx-auto p-4">
+<div class="container mx-auto my-8">
   <h1 class="text-3xl font-bold mb-4">Hacer Pedido</h1>
-  <form (ngSubmit)="submitPedido()">
-    <div class="mb-4" *ngFor="let plato of menu">
-      <label>
-        <input type="checkbox" [value]="plato" (change)="togglePlato(plato)" />
-        {{ plato.nombre }} - {{ plato.precio | currency }}
-      </label>
+  <div class="flex flex-col md:flex-row items-center md:items-start">
+    <!-- Imagen del plato -->
+    <div class="md:w-1/2">
+      <img src="sushi1.jpg" alt="Makis" class="w-full h-64 object-cover mb-4" />
+      <h2 class="text-2xl font-semibold mb-2">Makis</h2>
+      <p class="text-lg font-bold mb-4">$5.99</p>
     </div>
-    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
-      Enviar Pedido
-    </button>
-  </form>
+
+    <!-- Formulario de compra -->
+    <div class="md:w-1/2 md:ml-8">
+      <form>
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700 text-sm font-bold mb-2"
+            >Nombre Completo:</label
+          >
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 text-sm font-bold mb-2"
+            >Correo Electrónico:</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="address"
+            class="block text-gray-700 text-sm font-bold mb-2"
+            >Dirección:</label
+          >
+          <input
+            type="text"
+            id="address"
+            name="address"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="card" class="block text-gray-700 text-sm font-bold mb-2"
+            >Número de Tarjeta:</label
+          >
+          <input
+            type="text"
+            id="card"
+            name="card"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="expiry" class="block text-gray-700 text-sm font-bold mb-2"
+            >Fecha de Expiración:</label
+          >
+          <input
+            type="text"
+            id="expiry"
+            name="expiry"
+            placeholder="MM/AA"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="cvv" class="block text-gray-700 text-sm font-bold mb-2"
+            >CVV:</label
+          >
+          <input
+            type="text"
+            id="cvv"
+            name="cvv"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <p class="text-lg font-bold">Total: $5.99</p>
+        </div>
+
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Realizar Pedido
+        </button>
+      </form>
+    </div>
+  </div>
 </div>

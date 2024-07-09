@@ -1,16 +1,118 @@
-<div class="container mx-auto p-4">
+<div class="container mx-auto my-8">
   <h1 class="text-3xl font-bold mb-4">Menú</h1>
-  <div *ngIf="menu.length > 0; else noMenu">
-    <div
-      *ngFor="let plato of menu"
-      class="p-4 mb-4 bg-white rounded-lg shadow-md"
-    >
-      <h2 class="text-2xl font-bold">{{ plato.nombre }}</h2>
-      <p>{{ plato.descripcion }}</p>
-      <p class="text-lg font-semibold">{{ plato.precio | currency }}</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="p-4 border rounded shadow flex flex-col items-center">
+      <img src="sushi1.jpg" alt="Makis" class="w-full h-64 object-cover mb-4" />
+      <h2 class="text-2xl font-semibold">Makis</h2>
+      <p class="text-gray-600 mb-4">Rollos de sushi envueltos en alga.</p>
+      <p class="text-lg font-bold mb-4">$5.99</p>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Comprar
+      </button>
+    </div>
+
+    <div class="p-4 border rounded shadow flex flex-col items-center">
+      <img
+        src="sushi2.jpg"
+        alt="Uramakis"
+        class="w-full h-64 object-cover mb-4"
+      />
+      <h2 class="text-2xl font-semibold">Uramakis</h2>
+      <p class="text-gray-600 mb-4">Rollos de sushi con arroz por fuera.</p>
+      <p class="text-lg font-bold mb-4">$6.99</p>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Comprar
+      </button>
+    </div>
+
+    <div class="p-4 border rounded shadow flex flex-col items-center">
+      <img
+        src="sushi3.jpg"
+        alt="Nigiris"
+        class="w-full h-64 object-cover mb-4"
+      />
+      <h2 class="text-2xl font-semibold">Nigiris</h2>
+      <p class="text-gray-600 mb-4">Bolas de arroz con pescado encima.</p>
+      <p class="text-lg font-bold mb-4">$7.99</p>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Comprar
+      </button>
+    </div>
+
+    <div class="p-4 border rounded shadow flex flex-col items-center">
+      <img
+        src="sushi4.jpg"
+        alt="Gunkan"
+        class="w-full h-64 object-cover mb-4"
+      />
+      <h2 class="text-2xl font-semibold">Gunkan</h2>
+      <p class="text-gray-600 mb-4">
+        Sushi envuelto en alga con ingredientes encima.
+      </p>
+      <p class="text-lg font-bold mb-4">$8.99</p>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Comprar
+      </button>
+    </div>
+
+    <div class="p-4 border rounded shadow flex flex-col items-center">
+      <img
+        src="sushi5.jpg"
+        alt="Temaki"
+        class="w-full h-64 object-cover mb-4"
+      />
+      <h2 class="text-2xl font-semibold">Temaki</h2>
+      <p class="text-gray-600 mb-4">
+        Conos de alga rellenos de arroz y otros ingredientes.
+      </p>
+      <p class="text-lg font-bold mb-4">$5.99</p>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Comprar
+      </button>
+    </div>
+
+    <div class="p-4 border rounded shadow flex flex-col items-center">
+      <img
+        src="sushi6.jpg"
+        alt="Oshi sushi"
+        class="w-full h-64 object-cover mb-4"
+      />
+      <h2 class="text-2xl font-semibold">Oshi sushi</h2>
+      <p class="text-gray-600 mb-4">Sushi prensado en una caja.</p>
+      <p class="text-lg font-bold mb-4">$9.99</p>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Comprar
+      </button>
+    </div>
+
+    <div class="p-4 border rounded shadow flex flex-col items-center">
+      <img
+        src="sushi7.jpg"
+        alt="Onigiri"
+        class="w-full h-64 object-cover mb-4"
+      />
+      <h2 class="text-2xl font-semibold">Onigiri</h2>
+      <p class="text-gray-600 mb-4">
+        Bolas de arroz rellenas y envueltas en alga.
+      </p>
+      <p class="text-lg font-bold mb-4">$4.99</p>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Comprar
+      </button>
     </div>
   </div>
-  <ng-template #noMenu>
-    <p>No hay platos disponibles en este momento.</p>
-  </ng-template>
 </div>
