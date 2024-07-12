@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -6,13 +6,25 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  showVideo: boolean = false;
+export class AppComponent implements OnInit {
+  title = 'restaurante-app';
+  isHomePage: boolean = false;
+  images = [
+    'sushi1.jpg',
+    'sushi2.jpg',
+    'sushi3.jpg',
+    'sushi4.jpg',
+    'sushi5.jpg',
+    'sushi6.jpg',
+    'sushi7.jpg',
+  ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.showVideo = this.router.url === '/';
+        this.isHomePage = event.url === '/';
       }
     });
   }

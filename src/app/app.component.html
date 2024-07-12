@@ -3,13 +3,35 @@
   <div class="container mx-auto flex justify-between items-center">
     <img src="sushi_logo2.png" alt="logo" class="h-12" />
     <ul class="flex space-x-4">
-      <li><a routerLink="/" class="hover:text-gray-300">Inicio</a></li>
-      <li><a routerLink="/menu" class="hover:text-gray-300">Menú</a></li>
       <li>
-        <a routerLink="/pedido" class="hover:text-gray-300">Hacer Pedido</a>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          class="nav-link hover:text-gray-300"
+          >Inicio</a
+        >
       </li>
       <li>
-        <a routerLink="/calificacion" class="hover:text-gray-300"
+        <a
+          routerLink="/menu"
+          routerLinkActive="active"
+          class="nav-link hover:text-gray-300"
+          >Menú</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/pedido"
+          routerLinkActive="active"
+          class="nav-link hover:text-gray-300"
+          >Hacer Pedido</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/calificacion"
+          routerLinkActive="active"
+          class="nav-link hover:text-gray-300"
           >Calificar Mesero</a
         >
       </li>
@@ -17,12 +39,13 @@
   </div>
 </nav>
 
-<!-- Video de Introducción (Solo en la página de Inicio) -->
-<div *ngIf="showVideo" class="relative h-screen overflow-hidden">
-  <video autoplay muted loop class="w-full h-full object-cover">
-    <source src="sushi_video.mp4" type="video/mp4" />
-    Tu navegador no soporta el video.
-  </video>
+<!-- Carrusel de Fotos (solo en la página de Inicio) -->
+<div *ngIf="isHomePage" class="relative h-screen overflow-hidden">
+  <carousel>
+    <slide *ngFor="let img of images">
+      <img [src]="img" class="d-block w-100 h-full object-cover" alt="sushi" />
+    </slide>
+  </carousel>
   <div class="absolute inset-0 flex items-center justify-center">
     <h1 class="text-white text-4xl md:text-6xl lg:text-8xl font-bold">
       Bienvenido a Sushi Restaurant
