@@ -1,118 +1,62 @@
 <div class="container mx-auto my-8">
   <h1 class="text-3xl font-bold mb-4">Menú</h1>
+  <h2 class="text-2xl font-bold mb-4">Total: {{ total | currency }}</h2>
+  <button
+    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-4"
+    (click)="openModal()"
+    [disabled]="total === 0"
+  >
+    Pagar
+  </button>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div class="p-4 border rounded shadow flex flex-col items-center">
-      <img src="sushi1.jpg" alt="Makis" class="w-full h-64 object-cover mb-4" />
-      <h2 class="text-2xl font-semibold">Makis</h2>
-      <p class="text-gray-600 mb-4">Rollos de sushi envueltos en alga.</p>
-      <p class="text-lg font-bold mb-4">$5.99</p>
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Comprar
-      </button>
+    <div *ngFor="let item of menuItems" class="p-4 border rounded shadow flex flex-col items-center">
+      <img [src]="item.image" [alt]="item.name" class="w-full h-64 object-cover mb-4" />
+      <h2 class="text-2xl font-semibold">{{ item.name }}</h2>
+      <p class="text-gray-600 mb-4">{{ item.description }}</p>
+      <p class="text-lg font-bold mb-4">{{ item.price | currency }}</p>
+      <div class="flex items-center space-x-2">
+        <input
+          type="number"
+          [(ngModel)]="item.quantity"
+          min="1"
+          class="w-16 p-2 border rounded"
+        />
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          (click)="addToCart(item)"
+        >
+          Comprar
+        </button>
+      </div>
     </div>
+  </div>
 
-    <div class="p-4 border rounded shadow flex flex-col items-center">
-      <img
-        src="sushi2.jpg"
-        alt="Uramakis"
-        class="w-full h-64 object-cover mb-4"
-      />
-      <h2 class="text-2xl font-semibold">Uramakis</h2>
-      <p class="text-gray-600 mb-4">Rollos de sushi con arroz por fuera.</p>
-      <p class="text-lg font-bold mb-4">$6.99</p>
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Comprar
-      </button>
-    </div>
-
-    <div class="p-4 border rounded shadow flex flex-col items-center">
-      <img
-        src="sushi3.jpg"
-        alt="Nigiris"
-        class="w-full h-64 object-cover mb-4"
-      />
-      <h2 class="text-2xl font-semibold">Nigiris</h2>
-      <p class="text-gray-600 mb-4">Bolas de arroz con pescado encima.</p>
-      <p class="text-lg font-bold mb-4">$7.99</p>
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Comprar
-      </button>
-    </div>
-
-    <div class="p-4 border rounded shadow flex flex-col items-center">
-      <img
-        src="sushi4.jpg"
-        alt="Gunkan"
-        class="w-full h-64 object-cover mb-4"
-      />
-      <h2 class="text-2xl font-semibold">Gunkan</h2>
-      <p class="text-gray-600 mb-4">
-        Sushi envuelto en alga con ingredientes encima.
-      </p>
-      <p class="text-lg font-bold mb-4">$8.99</p>
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Comprar
-      </button>
-    </div>
-
-    <div class="p-4 border rounded shadow flex flex-col items-center">
-      <img
-        src="sushi5.jpg"
-        alt="Temaki"
-        class="w-full h-64 object-cover mb-4"
-      />
-      <h2 class="text-2xl font-semibold">Temaki</h2>
-      <p class="text-gray-600 mb-4">
-        Conos de alga rellenos de arroz y otros ingredientes.
-      </p>
-      <p class="text-lg font-bold mb-4">$5.99</p>
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Comprar
-      </button>
-    </div>
-
-    <div class="p-4 border rounded shadow flex flex-col items-center">
-      <img
-        src="sushi6.jpg"
-        alt="Oshi sushi"
-        class="w-full h-64 object-cover mb-4"
-      />
-      <h2 class="text-2xl font-semibold">Oshi sushi</h2>
-      <p class="text-gray-600 mb-4">Sushi prensado en una caja.</p>
-      <p class="text-lg font-bold mb-4">$9.99</p>
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Comprar
-      </button>
-    </div>
-
-    <div class="p-4 border rounded shadow flex flex-col items-center">
-      <img
-        src="sushi7.jpg"
-        alt="Onigiri"
-        class="w-full h-64 object-cover mb-4"
-      />
-      <h2 class="text-2xl font-semibold">Onigiri</h2>
-      <p class="text-gray-600 mb-4">
-        Bolas de arroz rellenas y envueltas en alga.
-      </p>
-      <p class="text-lg font-bold mb-4">$4.99</p>
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Comprar
-      </button>
+  <!-- Modal -->
+  <div *ngIf="isModalOpen" class="fixed z-10 inset-0 overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4">
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+      </div>
+      <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+        <div class="bg-white p-6">
+          <h2 class="text-xl font-bold mb-4">Resumen de la Compra</h2>
+          <ul>
+            <li *ngFor="let item of cartItems">
+              {{ item.quantity }} x {{ item.name }} - {{ item.price | currency }}
+            </li>
+          </ul>
+          <p class="mt-4"><strong>Total:</strong> {{ total | currency }}</p>
+          <p><strong>Email:</strong> {{ userEmail }}</p>
+          <div class="mt-4 flex justify-end">
+            <button
+              class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              (click)="closeModal()"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

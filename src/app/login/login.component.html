@@ -12,7 +12,8 @@
         name="email"
         class="mt-1 p-2 w-full border rounded-md"
         required
-      />
+        />
+        <p *ngIf="emailError" class="text-red-500 text-sm">{{ emailError }}</p>
     </div>
     <div class="mb-4">
       <label for="password" class="block text-sm font-medium text-gray-700"

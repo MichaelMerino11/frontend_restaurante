@@ -10,6 +10,7 @@
       </h5>
     </a>
     <a
+      *ngIf="isAuthenticated"
       routerLink="/pedido"
       class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100"
     >
@@ -26,4 +27,11 @@
       </h5>
     </a>
   </div>
+
+  <button *ngIf="isAuthenticated"
+    (click)="logout()"
+    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+  >
+    Cerrar Sesión
+  </button>
 </div>

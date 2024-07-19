@@ -6,14 +6,15 @@ import { PedidoComponent } from './pedido/pedido.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CalificacionComponent } from './calificacion/calificacion.component';
-
+import {AuthGuard} from '../app/auth.guard'
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'menu', component: MenuComponent },
-  { path: 'pedido', component: PedidoComponent },
+  { path: 'pedido', component: PedidoComponent,canActivate:[AuthGuard] },
   { path: 'calificacion', component: CalificacionComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  {path: '**', redirectTo: '' }
 ];
 
 @NgModule({
