@@ -9,6 +9,8 @@ import { CalificacionComponent } from './calificacion/calificacion.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     MenuComponent,
     PedidoComponent,
     CalificacionComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, CarouselModule.forRoot()],
   providers: [],
