@@ -6,19 +6,22 @@ import { PedidoComponent } from './pedido/pedido.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CalificacionComponent } from './calificacion/calificacion.component';
-import {AuthGuard} from '../app/auth.guard'
+import { AdminComponent } from './admin/admin.component';
+import { AuthGuard } from './auth.guard';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'menu', component: MenuComponent },
-  { path: 'pedido', component: PedidoComponent,canActivate:[AuthGuard] },
-  { path: 'calificacion', component: CalificacionComponent },
+  { path: 'pedido', component: PedidoComponent, canActivate: [AuthGuard] },
+  { path: 'calificacion', component: CalificacionComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  {path: '**', redirectTo: '' }
+  { path: 'admin', component: AdminComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

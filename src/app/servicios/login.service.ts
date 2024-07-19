@@ -8,8 +8,8 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://3.147.75.62:3000/api/v1';
-
+  //private apiUrl = 'http://3.147.75.62:3000/api/v1';
+  private apiUrl = 'http://localhost:3000/api/v1';
   constructor(private http: HttpClient) {}
 
   register(email: string, password: string): Observable<User> {

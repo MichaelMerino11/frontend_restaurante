@@ -32,11 +32,13 @@ export class LoginComponent {
     this.authService.login(this.email, this.password,).subscribe(
       () => {
         console.log('Login successful');
-        this.router.navigate(['/menu']);
+        this.router.navigate(['/admin']);
       },
       (error) => {
         console.error('Login failed:', error);
       }
     );
   }
+
+  
 }

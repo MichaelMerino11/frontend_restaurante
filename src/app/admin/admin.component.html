@@ -1,0 +1,29 @@
+<button (click)="ngOnInit()">traer datos</button>
+<div class="container">
+    <h2>Lista de Meseros</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Edad</th>
+          <th>Calificación</th>
+          <th>Foto</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mesero of meseros">
+          <td>{{ mesero.nombre }}</td>
+          <td>{{ mesero.apellido }}</td>
+          <td>{{ mesero.edad }}</td>
+          <td>{{ mesero.calificacion }}</td>
+          <td><img [src]="mesero.foto" alt="Foto de {{ mesero.nombre }}" width="50"></td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteMesero(mesero._id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
